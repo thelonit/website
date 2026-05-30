@@ -296,3 +296,78 @@ blockquote {
   gap: 10px;
   margin-bottom: 1rem;
 }
+
+/* تنظیمات کلی فهرست مطالب برای حالت Stacked */
+.toc {
+  width: 100%;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* تیتر فهرست و دکمه باز و بسته شدن */
+button#toc {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse; /* قرار دادن فلش در سمت چپ متن */
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+/* چرخش فلش در حالت باز و بسته */
+button#toc svg {
+  transition: transform 0.3s ease;
+}
+button#toc.fold svg {
+  transform: rotate(90deg); /* تنظیم جهت فلش */
+}
+
+/* بخش اصلی محتوا که باید اسکرول شود */
+#toc-content {
+  max-height: 50vh; /* ارتفاع فهرست */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px !important;
+  margin-top: 10px;
+  /* ایجاد خط درختی شبیه ابسیدین */
+  border-right: 1px solid var(--lightgray); 
+}
+
+/* تنظیمات لیست تیترها */
+#toc-content ul {
+  list-style: none;
+  padding-right: 15px !important;
+  margin: 5px 0;
+}
+
+/* اندازه فونت و فاصله تیترها */
+#toc-content li {
+  font-size: 0.85rem;
+  margin: 8px 0;
+}
+
+#toc-content a {
+  text-decoration: none;
+  color: var(--darkgray);
+  display: block;
+  transition: color 0.2s;
+}
+
+#toc-content a:hover {
+  color: var(--secondary);
+}
+
+/* اسکرول بار ظریف */
+#toc-content::-webkit-scrollbar {
+  width: 4px;
+}
+#toc-content::-webkit-scrollbar-thumb {
+  background-color: var(--lightgray);
+  border-radius: 10px;
+}
