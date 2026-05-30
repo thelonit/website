@@ -22,7 +22,6 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
-    //Component.ContentMeta(), // برای حذف جزییاتی که توسط خود کواتز نشان داده میشد
     Component.ConditionalRender({
       component: Component.ContentMetaPlus({ showReadingTime: false, showComma: false }),
       condition: (page) => page.fileData.slug !== "index",
@@ -42,25 +41,27 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    // در صفحه اصلی: اکسپلورر (فهرست کل سایت) را نشان بده
+    // نمایش اکسپلورر در صفحه اصلی
     Component.ConditionalRender({
       component: Component.Explorer(),
       condition: (page) => page.fileData.slug === "index",
     }),
-    // در صفحات غیر از صفحه اصلی: فهرست مطالب همان یادداشت را نشان بده
+    // نمایش فهرست مطالب (TOC) در بقیه صفحات با قابلیت تاشو و درختی
     Component.ConditionalRender({
-      component: Component.DesktopOnly(Component.TableOfContents()),
+      component: Component.DesktopOnly(Component.TableOfContents({ 
+        layout: "stacked",
+        collapseByDefault: false  
+      })),
       condition: (page) => page.fileData.slug !== "index",
     }),
   ],
   right: [
     Component.Graph(),
-    // حذف فهرست مطالب از ستون راست چون به ستون چپ منتقل شد
     Component.Backlinks(),
   ],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
+// components for pages that display lists of pages (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
   beforeBody: [
     Component.Breadcrumbs(),

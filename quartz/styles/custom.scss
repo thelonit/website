@@ -72,3 +72,227 @@ blockquote {
   transition: border-color 0.2s;
 }
 
+/* اصلاح کلی سایدبار سمت راست */
+.left.sidebar {
+  padding-top: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* همه چیز در مرکز قرار بگیرد */
+  gap: 1.5rem; /* فاصله بین المان‌های مختلف */
+}
+
+/* تراز کردن دکمه‌های دارک مود و زبان در یک ردیف */
+.side-buttons { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* اصلاح دکمه جستجو */
+.search-button {
+  width: 100% !important;
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--lightgray); /* هماهنگ با تم */
+}
+
+/* اصلاح متن داخل جستجو */
+#search-button > p {
+  margin: 0 !important;
+  padding-right: 8px;
+  line-height: 1;
+}
+
+/* اصلاح آیکون جستجو */
+#search-button > svg {
+  margin: 0 !important;
+}
+
+/* استایل فهرست مطالب (TOC) */
+.toc {
+  width: 100%;
+  text-align: right;
+  border-right: 2px solid var(--lightgray);
+  padding-right: 1rem;
+}
+
+.toc li {
+  list-style: none;
+  margin: 8px 0;
+}
+
+/* متمایز کردن زیرتیترها */
+.toc li a.depth-3, .toc li a.depth-4 {
+  color: var(--gray);
+  font-size: 0.85rem;
+  margin-right: 15px; /* ایجاد فاصله برای زیرمجموعه */
+  display: block;
+}
+
+/* اضافه کردن لوگو کنار عنوان */
+.page-title a::before {
+  content: "";
+  display: inline-block;
+  width: 40px; /* اندازه لوگو */
+  height: 40px;
+  background-image: url("../static/logo.png"); /* آدرس لوگو */
+  background-size: contain;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-left: 10px; /* فاصله لوگو از متن */
+}
+
+/* انیمیشن برای لوگو و عنوان */
+.page-title {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.page-title:hover {
+  transform: scale(1.05) translateY(-2px); /* کمی بزرگ شدن و بالا رفتن */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* انیمیشن برای دکمه‌های دارک‌مود و جستجو */
+.darkmode, .search-button, .toc-button {
+  transition: transform 0.3s ease;
+}
+
+.darkmode:hover, .search-button:hover {
+  transform: rotate(5deg) scale(1.1); /* کمی چرخش و بزرگ شدن */
+}
+
+/* استایل شعار */
+.left.sidebar p {
+  font-weight: 300;
+  opacity: 0.8;
+  letter-spacing: -0.5px;
+}
+
+/* اضافه کردن شعار زیر عنوان سایت */
+.page-title a::after {
+  content: "دانشنامه شخصی من"; /* متن شعار را اینجا بنویس */
+  display: block;
+  font-size: 0.75rem;
+  color: var(--gray);
+  font-weight: normal;
+  margin-top: 5px;
+  letter-spacing: 0;
+  opacity: 0.8;
+}
+
+/* اصلاح چیدمان عنوان برای اینکه شعار درست زیرش بیاید */
+.page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* اگر لوگو را هم اضافه کرده بودی، این کد لوگو را کنار متن نگه می‌دارد */
+.page-title a {
+  text-decoration: none;
+}
+
+
+////
+/// 
+/// 
+/* استایل اختصاصی فهرست مطالب (TOC) به سبک ابسیدین */
+.toc {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-height: 60vh; /* محدود کردن ارتفاع برای ظاهر شدن اسکرول */
+  overflow-y: auto; /* فعال کردن اسکرول عمودی */
+  direction: rtl;
+
+  /* مخفی کردن اسکرول‌بار در مرورگرهای کروم و سفاری برای زیبایی */
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--lightgray);
+    border-radius: 10px;
+  }
+
+  button#toc {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* متن سمت راست، فلش سمت چپ */
+    width: 100%;
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 1.1rem;
+    
+    &::after {
+      content: "▼"; 
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+      margin-left: 5px;
+    }
+    &.collapsed::after {
+      transform: rotate(90deg); /* چرخش فلش در حالت بسته */
+    }
+  }
+
+  #toc-content {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-right: 1px solid var(--lightgray); /* خط عمودی اصلی ابسیدین */
+      
+      ul {
+        padding-right: 1rem; /* تورفتگی لایه‌های زیرین */
+        border-right: 1px solid var(--lightgray); /* خط عمودی برای زیرشاخه‌ها */
+        margin-right: -1px;
+      }
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    a {
+      display: block;
+      padding: 3px 8px;
+      color: var(--gray);
+      font-size: 0.9rem;
+      text-decoration: none !important;
+      line-height: 1.4;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: var(--lightgray);
+        color: var(--secondary) !important;
+      }
+
+      &.active {
+        color: var(--tertiary) !important;
+        font-weight: bold;
+        background-color: rgba(var(--tertiary), 0.1);
+      }
+    }
+  }
+}
+
+/* تنظیم مجدد بخش جستجو و آیکون‌ها در سایدبار */
+.sidebar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
