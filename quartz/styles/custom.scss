@@ -39,8 +39,6 @@ button#explorer .fold {
   padding-left: 0px !important;
 }
 
-z
-
 li:has(> .folder-outer:not(.open)) > .folder-container > svg {
   transform: rotate(90deg) !important;
 }
@@ -77,8 +75,8 @@ blockquote {
   padding-top: 2rem !important;
   display: flex;
   flex-direction: column;
-  align-items: center; /* همه چیز در مرکز قرار بگیرد */
-  gap: 1.5rem; /* فاصله بین المان‌های مختلف */
+  align-items: center; 
+  gap: 1.5rem; 
 }
 
 /* تراز کردن دکمه‌های دارک مود و زبان در یک ردیف */
@@ -100,17 +98,15 @@ blockquote {
   justify-content: center;
   padding: 0.5rem;
   border-radius: 8px;
-  background-color: var(--lightgray); /* هماهنگ با تم */
+  background-color: var(--lightgray);
 }
 
-/* اصلاح متن داخل جستجو */
 #search-button > p {
   margin: 0 !important;
   padding-right: 8px;
   line-height: 1;
 }
 
-/* اصلاح آیکون جستجو */
 #search-button > svg {
   margin: 0 !important;
 }
@@ -119,8 +115,8 @@ blockquote {
 .toc {
   width: 100%;
   text-align: right;
-  border-right: 2px solid var(--lightgray);
-  padding-right: 1rem;
+  border-right: none !important; /* حذف خط عمودی */
+  padding-right: 0 !important; /* حذف پدینگ */
 }
 
 .toc li {
@@ -128,11 +124,11 @@ blockquote {
   margin: 8px 0;
 }
 
-/* متمایز کردن زیرتیترها */
+/* متمایز کردن زیرتیترها - حذف تورفتگی */
 .toc li a.depth-3, .toc li a.depth-4 {
   color: var(--gray);
   font-size: 0.85rem;
-  margin-right: 15px; /* ایجاد فاصله برای زیرمجموعه */
+  margin-right: 0 !important; /* حذف فاصله زیرمجموعه */
   display: block;
 }
 
@@ -140,13 +136,13 @@ blockquote {
 .page-title a::before {
   content: "";
   display: inline-block;
-  width: 40px; /* اندازه لوگو */
+  width: 40px; 
   height: 40px;
-  background-image: url("../static/logo.png"); /* آدرس لوگو */
+  background-image: url("../static/logo.png"); 
   background-size: contain;
   background-repeat: no-repeat;
   vertical-align: middle;
-  margin-left: 10px; /* فاصله لوگو از متن */
+  margin-left: 10px;
 }
 
 /* انیمیشن برای لوگو و عنوان */
@@ -155,7 +151,7 @@ blockquote {
 }
 
 .page-title:hover {
-  transform: scale(1.05) translateY(-2px); /* کمی بزرگ شدن و بالا رفتن */
+  transform: scale(1.05) translateY(-2px);
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
 }
 
@@ -165,7 +161,7 @@ blockquote {
 }
 
 .darkmode:hover, .search-button:hover {
-  transform: rotate(5deg) scale(1.1); /* کمی چرخش و بزرگ شدن */
+  transform: rotate(5deg) scale(1.1);
 }
 
 /* استایل شعار */
@@ -177,7 +173,7 @@ blockquote {
 
 /* اضافه کردن شعار زیر عنوان سایت */
 .page-title a::after {
-  content: "دانشنامه شخصی من"; /* متن شعار را اینجا بنویس */
+  content: "دانشنامه شخصی من"; 
   display: block;
   font-size: 0.75rem;
   color: var(--gray);
@@ -187,7 +183,6 @@ blockquote {
   opacity: 0.8;
 }
 
-/* اصلاح چیدمان عنوان برای اینکه شعار درست زیرش بیاید */
 .page-title {
   display: flex;
   flex-direction: column;
@@ -195,27 +190,21 @@ blockquote {
   text-align: center;
 }
 
-/* اگر لوگو را هم اضافه کرده بودی، این کد لوگو را کنار متن نگه می‌دارد */
 .page-title a {
   text-decoration: none;
 }
 
-
-////
-/// 
-/// 
-/* استایل اختصاصی فهرست مطالب (TOC) به سبک ابسیدین */
+/* استایل اختصاصی فهرست مطالب (TOC) */
 .toc {
   border: none !important;
   background: transparent !important;
   padding: 0 !important;
   margin-top: 1.5rem;
   width: 100%;
-  max-height: 60vh; /* محدود کردن ارتفاع برای ظاهر شدن اسکرول */
-  overflow-y: auto; /* فعال کردن اسکرول عمودی */
+  max-height: 60vh; 
+  overflow-y: auto; 
   direction: rtl;
 
-  /* مخفی کردن اسکرول‌بار در مرورگرهای کروم و سفاری برای زیبایی */
   &::-webkit-scrollbar {
     width: 3px;
   }
@@ -231,7 +220,7 @@ blockquote {
     padding: 0.5rem 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* متن سمت راست، فلش سمت چپ */
+    justify-content: space-between; 
     width: 100%;
     color: var(--dark);
     font-weight: bold;
@@ -244,7 +233,7 @@ blockquote {
       margin-left: 5px;
     }
     &.collapsed::after {
-      transform: rotate(90deg); /* چرخش فلش در حالت بسته */
+      transform: rotate(90deg); 
     }
   }
 
@@ -252,13 +241,13 @@ blockquote {
     ul {
       list-style: none;
       margin: 0;
-      padding: 0;
-      border-right: 1px solid var(--lightgray); /* خط عمودی اصلی ابسیدین */
+      padding: 0 !important; /* حذف تورفتگی */
+      border-right: none !important; /* حذف خط عمودی */
       
       ul {
-        padding-right: 1rem; /* تورفتگی لایه‌های زیرین */
-        border-right: 1px solid var(--lightgray); /* خط عمودی برای زیرشاخه‌ها */
-        margin-right: -1px;
+        padding-right: 0 !important; /* حذف تورفتگی زیرشاخه‌ها */
+        border-right: none !important; /* حذف خط عمودی زیرشاخه‌ها */
+        margin-right: 0;
       }
     }
 
@@ -289,7 +278,6 @@ blockquote {
   }
 }
 
-/* تنظیم مجدد بخش جستجو و آیکون‌ها در سایدبار */
 .sidebar-controls {
   display: flex;
   align-items: center;
@@ -297,18 +285,16 @@ blockquote {
   margin-bottom: 1rem;
 }
 
-/* تنظیمات کلی فهرست مطالب برای حالت Stacked */
 .toc {
   width: 100%;
   direction: rtl !important;
   text-align: right !important;
 }
 
-/* تیتر فهرست و دکمه باز و بسته شدن */
 button#toc {
   width: 100%;
   display: flex;
-  flex-direction: row-reverse; /* قرار دادن فلش در سمت چپ متن */
+  flex-direction: row-reverse; 
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
@@ -320,33 +306,28 @@ button#toc {
   color: var(--secondary);
 }
 
-/* چرخش فلش در حالت باز و بسته */
 button#toc svg {
   transition: transform 0.3s ease;
 }
 button#toc.fold svg {
-  transform: rotate(90deg); /* تنظیم جهت فلش */
+  transform: rotate(90deg);
 }
 
-/* بخش اصلی محتوا که باید اسکرول شود */
 #toc-content {
-  max-height: 50vh; /* ارتفاع فهرست */
+  max-height: 50vh; 
   overflow-y: auto;
   overflow-x: hidden;
-  padding-right: 10px !important;
+  padding-right: 0 !important; /* حذف پدینگ */
   margin-top: 10px;
-  /* ایجاد خط درختی شبیه ابسیدین */
-  border-right: 1px solid var(--lightgray); 
+  border-right: none !important; /* حذف خط درختی */
 }
 
-/* تنظیمات لیست تیترها */
 #toc-content ul {
   list-style: none;
-  padding-right: 15px !important;
+  padding-right: 0 !important; /* حذف تورفتگی لیست */
   margin: 5px 0;
 }
 
-/* اندازه فونت و فاصله تیترها */
 #toc-content li {
   font-size: 0.85rem;
   margin: 8px 0;
@@ -363,7 +344,6 @@ button#toc.fold svg {
   color: var(--secondary);
 }
 
-/* اسکرول بار ظریف */
 #toc-content::-webkit-scrollbar {
   width: 4px;
 }
@@ -372,3 +352,10 @@ button#toc.fold svg {
   border-radius: 10px;
 }
 
+@media screen and (max-width: 800px) {
+  .toc, 
+  details.toc, 
+  #toc-content {
+    display: none !important;
+  }
+}
